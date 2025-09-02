@@ -27,7 +27,7 @@ A tool package for cosmology research.
 ## Installation
 First, clone the repository and enter the project directory:
 ```bash
-git clone https://github.com/jiangmengtian/mycosmotoolpy.git
+git clone https://github.com/jiangmengtian/cosmotoolpy.git
 cd mycosmotoolpy
 ```
 Then install the package in editable mode:
