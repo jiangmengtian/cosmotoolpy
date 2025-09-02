@@ -4,20 +4,20 @@ import numpy
 
 extensions = [
     Extension(
-        "mycosmotoolpy.cpseh",
-        ["src/mycosmotoolpy/cpower_spectrum_estimator_half.pyx"],
+        "cosmotoolpy.cpseh",
+        ["src/cosmotoolpy/cpower_spectrum_estimator_half.pyx"],
         include_dirs=[numpy.get_include()]
     ),
     Extension(
-        "mycosmotoolpy.cpaint_half",
-        ["src/mycosmotoolpy/cpaint_half.pyx"],
+        "cosmotoolpy.cpaint_half",
+        ["src/cosmotoolpy/cpaint_half.pyx"],
         include_dirs=[numpy.get_include()]
     ),
 ]
 
 setup(
-    name="mycosmotoolpy",
-    packages=["mycosmotoolpy"],
+    name="cosmotoolpy",
+    packages=["cosmotoolpy"],
     package_dir={"": "src"},
     ext_modules=cythonize(extensions, annotate=True, language_level="3"),
 )

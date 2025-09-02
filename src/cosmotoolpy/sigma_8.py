@@ -1,9 +1,8 @@
 import numpy as np
 from scipy import integrate
-import scipy.constants as C
 
 def sigma_R(P_interpolate, R=8):
-    pi = C.pi
+    pi = np.pi
     
     def integral(k):
         p = P_interpolate(k).item()

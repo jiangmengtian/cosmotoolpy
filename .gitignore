@@ -8,6 +8,7 @@ __pycache__/
 *.cpp
 *.so
 *.pyd
+src/mycosmotoolpy/*.html
 
 # Distribution / packaging
 .Python

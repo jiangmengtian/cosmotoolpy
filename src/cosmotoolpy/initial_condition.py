@@ -1,9 +1,8 @@
 from random import gauss
 import numpy as np
-import scipy.constants as C
 
 def ic_gaussian_random_field(P_interpolate, Ngrid, L=1000, mu=0, sigma=1):
-    pi = C.pi
+    pi = np.pi
     V  = L*L*L
     kF = 2*pi/L
     normal_factor = 1/(sigma*sigma*V*V/Ngrid**3)**(1/2)

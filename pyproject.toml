@@ -3,7 +3,7 @@ requires = ["setuptools >= 61.0", "wheel", "Cython", "numpy"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mycosmotoolpy"
+name = "cosmotoolpy"
 version = "0.0.1"
 description = "A tool package for cosmology research"
 readme = { file = "README.md", content-type = "text/markdown" }
@@ -15,8 +15,8 @@ authors = [
 dependencies = ["scipy", "numpy", "Cython"]
 
 [project.url]
-Homepage = "https://github.com/jiangmengtian/mycosmotoolpy"
-Repository = "https://github.com/jiangmengtian/mycosmotoolpy"
+Homepage = "https://github.com/jiangmengtian/cosmotoolpy"
+Repository = "https://github.com/jiangmengtian/cosmotoolpy"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
