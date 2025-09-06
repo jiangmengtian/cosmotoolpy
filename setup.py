@@ -4,13 +4,13 @@ import numpy
 
 extensions = [
     Extension(
-        "cosmotoolpy.cpseh",
-        ["src/cosmotoolpy/cpower_spectrum_estimator_half.pyx"],
+        "cosmotoolpy.cpse",
+        ["src/cosmotoolpy/cpower_spectrum_estimator.pyx"],
         include_dirs=[numpy.get_include()]
     ),
     Extension(
-        "cosmotoolpy.cpaint_half",
-        ["src/cosmotoolpy/cpaint_half.pyx"],
+        "cosmotoolpy.cpaint",
+        ["src/cosmotoolpy/cpaint.pyx"],
         include_dirs=[numpy.get_include()]
     ),
 ]
