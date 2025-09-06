@@ -1,8 +1,26 @@
 import numpy as np
 from scipy import integrate
 
-def lgf(Omega_m, Omega_lambda, z, H0=67.36):
-    
+def lgf(Omega_m: float, Omega_lambda: float, z: float, H0: float = 67.36) -> float:
+    '''
+    Compute the linear growth factor of a cosmology at redshift z
+
+    Parameters
+    ----------
+    Omega_m: float
+        Proportion of matter component
+    Omega_lambda: float
+        Proportion of dark energy component
+    z: float
+        Redshift
+    H0: float, optional
+        Today's Hubble parameter
+
+    Returns
+    -------
+    linear growth factor: float
+        Normalized linear growth factor
+    '''
     Omega_k = 1-Omega_m-Omega_lambda
 
     def integral(z):
