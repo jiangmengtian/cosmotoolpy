@@ -8,7 +8,7 @@ def sigma_R(P_interpolate: interp1d, R: int = 8) -> float:
     Parameters
     ----------
     P_interpolate: interp1d
-        An interp1d instance generated with k and P(k)
+        An interp1d instance generated from arrays k and P(k)
     R: int
         Radius of the spherical top-hat window function
 
