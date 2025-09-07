@@ -113,7 +113,7 @@ def _cic(reduced_pos: np.ndarray, Ngrid: int) -> np.ndarray:
         
     return delta_x        
 
-def cic_interlace(pos, Ngrid, L=1000):
+def cic_interlace(pos: np.ndarray, Ngrid: int, L: float = 1000) -> np.ndarray:
     '''
     Compute the corresponding density contrast in Fourier space of particles under cic scheme
 
