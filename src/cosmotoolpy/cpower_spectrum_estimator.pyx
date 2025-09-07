@@ -15,8 +15,8 @@ def _power_spectrum_estimator_complex128(cnp.ndarray[cnp.complex128_t, ndim=3] d
     cdef int kx_size = delta_k.shape[0]
     cdef int ky_size = delta_k.shape[1]
     cdef int kz_size = delta_k.shape[2]
-    cdef int nx_max = kx_size / 2
-    cdef int ny_max = ky_size / 2
+    cdef int nx_max = kx_size // 2
+    cdef int ny_max = ky_size // 2
     cdef int nz_max = kz_size
     cdef int n_max = <int>(round(sqrt(<double>(nx_max*nx_max+ny_max*ny_max+nz_max*nz_max)))+1)
 
@@ -54,8 +54,8 @@ def _power_spectrum_estimator_float64(cnp.ndarray[cnp.float64_t, ndim=3] delta_k
     cdef int kx_size = delta_k.shape[0]
     cdef int ky_size = delta_k.shape[1]
     cdef int kz_size = delta_k.shape[2]
-    cdef int nx_max = kx_size / 2
-    cdef int ny_max = ky_size / 2
+    cdef int nx_max = kx_size // 2
+    cdef int ny_max = ky_size // 2
     cdef int nz_max = kz_size
     cdef int n_max = <int>(round(sqrt(<double>(nx_max*nx_max+ny_max*ny_max+nz_max*nz_max)))+1)
 
@@ -110,4 +110,4 @@ def power_spectrum_estimator(delta_k: np.ndarray, Ngrid: int, L: float = 1000) -
     elif delta_k.dtype == np.float64:
         return _power_spectrum_estimator_float64(delta_k, Ngrid, L)
     else:
-        raise TypeError(f"Unsupported input type: {type(delta_k)}")
+        raise TypeError(f"Unsupported input type: {delta_k.dtype}")
