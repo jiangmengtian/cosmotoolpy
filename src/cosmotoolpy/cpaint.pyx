@@ -222,4 +222,4 @@ def cic_interlace(pos: np.ndarray, Ngrid: int, L: float = 1000) -> np.ndarray:
     delta_k2 = delta_k2*phase
     
     delta_k = (delta_k1+delta_k2)/2
-    return deconvolution(delta_k, L, Ngrid, 2)
+    return deconvolution(delta_k, Ngrid, 2)

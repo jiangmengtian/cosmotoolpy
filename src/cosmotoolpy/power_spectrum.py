@@ -1,8 +1,8 @@
 import numpy as np
 from scipy import interpolate
-from cosmotoolpy.sigma_8 import sigma_R
-from cosmotoolpy.binning_correction import binning_correction
-from cosmotoolpy.inintial_condition import gaussian_random_field
+from .sigma_8 import sigma_R
+from .binning_correction import binning_correction
+from .initial_condition import gaussian_random_field
 
 class PowerSpectrum:
     def __init__(self, wn, ps):
@@ -27,10 +27,10 @@ class PowerSpectrum:
 
 
     def get_interpolate(self):
-        self.pfit = interpolate.interp1d(self.wn, self.ps)
+        self.pfit = interpolate.interp1d(self.wn, self.ps, bounds_error=False, fill_value=0)
 
     def get_sigma8(self):
-        self.sigma8 = sigma_8.sigma_R(self.pfit)
+        self.sigma8 = sigma_R(self.pfit)
 
     def get_binning_correction(self, Ngrid: int):
         k, P_k, _ = binning_correction(self.pfit, Ngrid)

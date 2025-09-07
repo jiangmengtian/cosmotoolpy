@@ -1,6 +1,7 @@
+from scipy.interpolate import interp1d
 from typing import Tuple
 import numpy as np
-from cosmotoolpy import cpse
+from .cpse import power_spectrum_estimator
 
 def binning_correction(P_interpolate: interp1d, Ngrid: int, L: float = 1000) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     '''
@@ -34,4 +35,4 @@ def binning_correction(P_interpolate: interp1d, Ngrid: int, L: float = 1000) -> 
     k_modulus = 2*pi*np.sqrt(nx*nx+ny*ny+nz*nz)
     delta_k = np.sqrt(V*P_interpolate(k_modulus))
     
-    return cpseh.power_spectrum_estimator(delta_k, Ngrid)
+    return power_spectrum_estimator(delta_k, Ngrid)

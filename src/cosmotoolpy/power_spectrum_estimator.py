@@ -47,7 +47,7 @@ def power_spectrum_estimator_naive(delta_k: np.ndarray, Ngrid: int, L: float = 1
                     continue
                 index = round(np.sqrt(nx*nx+ny*ny+m*m))
                 N_k[index] += 1
-                P_k[index] += abs(delta_k[i, j, m])**2
+                P_k[index] += np.abs(delta_k[i, j, m])**2
     for i in range(n_max):
         if not N_k[i]==0:
             P_k[i] = P_k[i]/V/N_k[i]

@@ -1,3 +1,4 @@
+from scipy.interpolate import interp1d
 from random import gauss
 import numpy as np
 

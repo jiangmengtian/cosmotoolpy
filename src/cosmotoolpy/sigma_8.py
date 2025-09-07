@@ -1,3 +1,4 @@
+from scipy.interpolate import interp1d
 import numpy as np
 from scipy import integrate
 
