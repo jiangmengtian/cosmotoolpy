@@ -44,7 +44,7 @@ def power_spectrum_estimator_naive(delta_k: np.ndarray, Ngrid: int, L: float = 1
             ny = j-ky_size if j>ky_mid else j
             for m in range(kz_size):
                 if (m==0 and (i>kx_mid or (i==0 and j>ky_mid))): 
-                continue
+                    continue
                 index = round(np.sqrt(nx*nx+ny*ny+m*m))
                 N_k[index] += 1
                 P_k[index] += abs(delta_k[i, j, m])**2
