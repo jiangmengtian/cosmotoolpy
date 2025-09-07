@@ -14,7 +14,7 @@ authors = [
 ]
 dependencies = ["scipy", "numpy", "Cython"]
 
-[project.url]
+[project.urls]
 Homepage = "https://github.com/jiangmengtian/cosmotoolpy"
 Repository = "https://github.com/jiangmengtian/cosmotoolpy"
 
