@@ -30,11 +30,17 @@ class PowerSpectrum:
         self.pfit = interpolate.interp1d(self.wn, self.ps, bounds_error=False, fill_value=0)
 
     def get_sigma8(self):
+        if not hasattr(self, 'pfit'):
+            self.get_interpolate()
         self.sigma8 = sigma_R(self.pfit)
 
     def get_binning_correction(self, Ngrid: int):
+        if not hasattr(self, 'pfit'):
+            self.get_interpolate()
         k, P_k, _ = binning_correction(self.pfit, Ngrid)
         self.bc = PowerSpectrum(k, P_k)
 
     def get_initial_condition(self, Ngrid: int) -> np.ndarray:
+        if not hasattr(self, 'pfit'):
+            self.get_interpolate()
         return gaussian_random_field(self.pfit, Ngrid)
