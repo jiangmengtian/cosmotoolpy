@@ -146,7 +146,7 @@ def _cross_power_spectrum_estimator_complex128(cnp.ndarray[cnp.complex128_t, ndi
                 index = <int>round(sqrt(<double>(nx*nx+ny*ny+m*m)))
                 N_k[index] += 1
                 product = delta_k1_view[i,j,m]*delta_k2_view[i,j,m].conjugate()
-                P_k[index] += (delta_k1_view[i,j,m]*delta_k2_view[i,j,m].conj()).real
+                P_k[index] += (delta_k1_view[i,j,m]*delta_k2_view[i,j,m].conjugate()).real
     for i in range(n_max):
         if N_k[i]>0:
             P_k[i] = P_k[i]/(V*N_k[i])
