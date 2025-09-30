@@ -40,7 +40,7 @@ class PowerSpectrum:
         k, P_k, _ = binning_correction(self.pfit, Ngrid)
         self.bc = PowerSpectrum(k, P_k)
 
-    def get_initial_condition(self, Ngrid: int) -> np.ndarray:
+    def get_initial_condition(self, Ngrid: int, *, mu=0, sigma=1) -> np.ndarray:
         if not hasattr(self, 'pfit'):
             self.get_interpolate()
-        return gaussian_random_field(self.pfit, Ngrid)
+        return gaussian_random_field(self.pfit, Ngrid, mu=mu, sigma=sigma)

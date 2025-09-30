@@ -1,8 +1,7 @@
 from scipy.interpolate import interp1d
-from random import gauss
 import numpy as np
 
-def gaussian_random_field(P_interpolate: interp1d, Ngrid: int, L: float = 1000, mu: float = 0, sigma: float = 1) -> np.ndarray:
+def gaussian_random_field(P_interpolate: interp1d, Ngrid: int, L: float = 1000, *, mu: float = 0, sigma: float = 1) -> np.ndarray:
     '''
     Generate a gaussian random field from a given power spectrum
 

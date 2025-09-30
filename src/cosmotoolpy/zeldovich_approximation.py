@@ -1,15 +1,15 @@
-from .power_spectrum import PowerSpectrum
 from typing import Tuple
 import numpy as np
 from .linear_growth_factor import linear_growth_factor
 
-def zeldovich_approximation(pow_spec: PowerSpectrum, Ngrid: int, z_init: int, Omega_m: float = 0.23, Omega_lambda: float = 0.77, L: float = 1000) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def zeldovich_approximation(delta_k: np.ndarray, Ngrid: int, z_init: int, Omega_m: float = 0.23, Omega_lambda: float = 0.77, L: float = 1000) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     '''
     Generate initial condition using Zeldovich approximation
 
     Parameters
     ----------
-    pow_spec: PowerSpectrum
+    delta_k:3d-array
+        Initial density contrast field in Fourier space
     Ngrid: int
         Number of grids
     z_init: int
@@ -34,7 +34,7 @@ def zeldovich_approximation(pow_spec: PowerSpectrum, Ngrid: int, z_init: int, Om
     V  = L*L*L
     kF = 2*pi/L
 
-    delta_k = pow_spec.get_initial_condition(Ngrid)*linear_growth_factor(Omega_m, Omega_lambda, z_init)
+    delta_k = delta_k*linear_growth_factor(Omega_m, Omega_lambda, z_init)
     nx_axis = np.fft.fftfreq(Ngrid, 1/Ngrid)
     ny_axis = np.fft.fftfreq(Ngrid, 1/Ngrid)
     nz_axis = np.fft.rfftfreq(Ngrid, 1/Ngrid)
@@ -45,5 +45,11 @@ def zeldovich_approximation(pow_spec: PowerSpectrum, Ngrid: int, z_init: int, Om
     psix = np.fft.irfftn(factor*nx*inv_k_modsq)/V*(Ngrid*Ngrid*Ngrid)
     psiy = np.fft.irfftn(factor*ny*inv_k_modsq)/V*(Ngrid*Ngrid*Ngrid)
     psiz = np.fft.irfftn(factor*nz*inv_k_modsq)/V*(Ngrid*Ngrid*Ngrid)
+
+    nx_axis = np.arange(Ngrid)
+    ny_axis = np.arange(Ngrid)
+    nz_axis = np.arange(Ngrid)
+    grid = np.stack(np.meshgrid(nx_axis, ny_axis, nz_axis, indexing="ij"), axis=-1)*(L/Ngrid)
+    position = (grid.reshape(-1, 3)+np.stack((psix, psiy, psiz), axis=-1).reshape(-1, 3))%L
     
-    return psix, psiy, psiz
+    return position
