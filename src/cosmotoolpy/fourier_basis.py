@@ -1,6 +1,6 @@
 import numpy as np
 
-def fourier_basis(Ngrid: int, L: float = 1000, *, option: str) -> np.ndarray:
+def fourier_basis(Ngrid: int, L: float = 1000, *, option: str = None) -> np.ndarray:
     '''
     Generate normalized Fourier spherical vector/helical vector/spherical tensor/helical tensor basis
 
@@ -13,7 +13,7 @@ def fourier_basis(Ngrid: int, L: float = 1000, *, option: str) -> np.ndarray:
         Box size in real space
     **kwargs
     option: str
-        Four option to choose the catagory of basis, 'spherical vector', 'helical vector', 'spherical tensor', 'helical tensor'
+        Four option to choose the catagory of basis, 'vector spherical', 'vector helical', 'tensor spherical', 'tensor helical'
 
     Returns
     -------
