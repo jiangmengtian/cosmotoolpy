@@ -17,7 +17,7 @@ def fourier_basis(Ngrid: int, L: float = 1000, *, option: str) -> np.ndarray:
 
     Returns
     -------
-    basis: 4d-array for vector or 5d-array for tensor
+    basis: 5d-array
         Component of independent basis in Cartesian coordinates 
     '''
     kx_axis = np.fft.fftfreq(Ngrid, L/Ngrid)
